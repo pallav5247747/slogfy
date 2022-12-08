@@ -1,0 +1,34 @@
+{% extends "main2.html" %}
+{% block title %}HOME{% endblock %}
+{% block style %}
+<style>
+    #notice {
+        max-height: 50%;
+        overflow-y: scroll;
+        background-color: var(--bs-light);
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div id="notice" class="container">
+    {% for i in data%}
+    <div class="row justify-content-between">
+        <div class="col-auto">
+            {{i.f_name}} {{i.l_name}}
+        </div>
+        <div class="col-auto">
+            {{i.apply_date}}
+        </div>
+        <div class="col-auto">
+            {% if i.hired == 0%}
+            <a href="/admin/hire/{{i.id}}/"><button type="button" class="btn btn-primary">hire</button></a>
+            <button type="button" class="btn border disabled">Send Again</button>
+            {% else %}
+            <button type="button" class="btn btn-success disabled">hired</button>
+            <a href="/admin/hire/{{i.id}}/"><button type="button" class="btn btn-secondary">Send Again</button></a>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

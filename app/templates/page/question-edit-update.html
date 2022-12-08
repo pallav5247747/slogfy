@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="container">
+        {% for i in data%}
+        <form action="/question/update/{{id}}/{{i.id}}/" method="post">
+            {% csrf_token %}
+            <label class="form-label">{{i.question}}</label>
+            <textarea class="form-control" name="text"></textarea>
+            <label class="form-group">Answer</label>
+            <div class="form-text">{{i.answer}}</div>
+            <div class="form-group">
+                <input typr="text" name="answer" maxlength="120" class="form-control">
+            </div>
+            <label class="form-group">Option2</label>
+            <div class="form-text">{{i.option2}}</div>
+            <div class="form-group">
+                <input typr="text" name="option2" maxlength="120" class="form-control">
+            </div>
+            <label class="form-group">Option3</label>
+            <div class="form-text">{{i.option3}}</div>
+            <div class="form-group">
+                <input typr="text" name="option3" maxlength="120" class="form-control">
+            </div>
+            <label class="form-group">Option4</label>
+            <div class="form-text">{{i.option4}}</div>
+            <div class="form-group">
+                <input typr="text" name="option4" maxlength="120" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm mt-2">Submit</button>
+        </form>
+        {% endfor %}
+
+    </div>
+
+</body>
+
+</html>
